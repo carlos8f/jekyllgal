@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "minimatch": "^3.0.3",
+    "minimist": "^1.2.0",
     "rreaddir": "^0.1.1"
   }
 }
