@@ -10,18 +10,22 @@ var out = '---\nw'
   + 'layout: post\n'
   + '---\n\n'
 
-var prefix = process.cwd()
+var dir = process.cwd()
+if (argv.dir) {
+  dir = argv.dir
+}
+var prefix = ''
 if (argv.prefix) {
   prefix = argv.prefix
 }
 
-reader(prefix, function (err, files) {
+reader(dir, function (err, files) {
   assert.ifError(err)
   files.forEach(function (file) {
-    file = file.replace(prefix, '')
+    file = file.replace(dir, '')
     //console.error('file', file)
     if (file.match(/\.(jpg|jpeg)$/i)) {
-      out += '![' + path.basename(file) + '](' + file + ')\n\n'
+      out += '![' + path.basename(file) + '](' + prefix + file + ')\n\n'
     }
   })
   console.log(out)
